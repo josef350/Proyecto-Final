@@ -1,0 +1,875 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+:root {
+    --primary: #536942;
+    --secondary: #ffd936;
+    --white: #efefee;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: black;
+    background-color: #fff;
+}
+
+/* Sección principal con video */
+#main {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+.main-content h1 {
+    color: #ff0000;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+/* Video de fondo */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(65%);
+}
+
+/* 🔹 Enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 🔹 Contenedor principal */
+.container {
+    max-width: 1200px;
+    padding: 16px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    margin: 80px auto;
+}
+.logo {
+    width: 100px; 
+}
+/* 🔹 Navegación */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px 60px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999999 !important; /* nivel máximo */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Lista del menú */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enlaces */
+.nav-list a {
+    position: relative;
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav-right {
+    display: flex;
+    align-items: center;  /* Alinea verticalmente los íconos y el botón */
+    gap: 20px;            /* Espacio entre íconos y el botón */
+}
+
+/*  Línea animada debajo */
+.nav-list a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+/* Al pasar el mouse */
+.nav-list a:hover {
+    color: var(--secondary);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+nav.hidden {
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+}
+
+/* Muestra el menú cuando se hace scroll hacia arriba */
+nav.visible {
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+
+/*  Botones */
+.btn {
+    padding: 12px 20px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.btn-secondary {
+    border: 2px solid var(--white);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary {
+    border: none;
+    background: rgb(255, 249, 169);
+    color: black;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: scale(1.02);
+}
+
+/* 🔹 Iconos de redes sociales */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 20px;
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary);
+    transform: scale(1.2);
+}
+
+/*  Contenido principal sobre el video */
+.main-content {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 200px;
+    color: var(--white);
+    text-align: center;
+}
+
+.main-content .intro-heading {
+    font-size: 50px;
+}
+
+.main-content .main-heading {
+    font-size: 110px;
+    margin-top: -10px;
+}
+
+.main-content p {
+    max-width: 250px;
+    margin-top: 10px;
+}
+
+/* 🔹 Menú móvil */
+.menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none;
+    width: 30px;
+    cursor: pointer;
+}
+
+/* 🔹 Servicios */
+.section-title h1 {
+    font-size: 50px;
+    text-align: center;
+    color: #000000;
+}
+
+.section-title .line {
+    width: 150px;
+    height: 4px;
+    background: rgb(255, 0, 0);
+    margin: 10px auto;
+}
+
+.services {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.service {
+    width: 350px;
+    text-align: center;
+    color: #000000;
+}
+
+.service img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-bottom: 3px solid rgb(247, 0, 0);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 0;
+}
+
+.service img:hover {
+    transform: scale(1.03);
+}
+
+.service h3 {
+    margin: 15px 0 10px;
+    font-size: 22px;
+    color: red;
+    letter-spacing: 1px;
+}
+
+/* 🎥 Sección de videos */
+#video-showcase {
+    background: #000000;
+    color: white;
+    padding: 60px 0;
+    position: relative;
+    z-index: 0;
+}
+
+#video-showcase .section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.videos {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.main-video {
+    flex: 2;
+}
+
+.side-videos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.video-box {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+}
+
+.video-box:hover video {
+    transform: scale(1.2);
+}
+
+.video-box .info {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    color: white;
+}
+
+.video-box .info h3 {
+    font-size: 26px;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.video-box .info p {
+    font-size: 16px;
+    background: var(--secondary);
+    color: #000000;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.video-box .info p:hover {
+    background: white;
+}
+
+/* 🗣 Testimonios */
+#testimonial {
+    background: white;
+    color: red;
+}
+
+#testimonial .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    gap: 30px;
+    padding: 50px 16px;
+    text-align: center;
+}
+
+#testimonial h1 {
+    font-size: 30px;
+}
+
+#testimonial .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+#testimonial img {
+    width: 50px;
+}
+.section-divider {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(90deg, #ffee00, #ff0000, #000000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/*  About Us */
+#about-us {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 60px 16px 40px 16px; /*  espacio controlado abajo */
+    flex-wrap: wrap;
+    margin-bottom: 0; /*  elimina espacio extra debajo */
+}
+#about-us .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 120px;
+    margin-bottom: 0;
+}
+
+#about-us .about-content {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+}
+
+#about-us .about-content h1 {
+    font-size: 30px;
+    color: red;
+}
+.about-image {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-image img {
+    width: 60%;
+    height: auto;
+    border-radius: 15px;      /* opcional: esquinas redondeadas */
+    object-fit: cover;        /* hace que se recorte sin deformarse */
+}
+
+/* Sección de preguntas */
+#questions {
+    position: relative;
+    min-height: 500px;
+    background-image: url("img/Manejando en carretera.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;     
+    justify-content: center; 
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#questions::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* controla la oscuridad */
+    z-index: 0; 
+}
+#questions .container {
+    position: relative;
+    z-index: 1; /* para que el texto quede sobre el overlay */
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: rgb(255, 255, 255); /* para destacar sobre la imagen */
+}
+
+#questions h1 {
+    font-size: 50px;
+}
+
+/* 🔹 Footer */
+footer {
+    margin-top: 0;
+    background: #000;
+    color: white;
+    padding: 5px 0;
+    position: relative;
+    z-index: 1;
+}
+
+footer .container {
+    display: flex;
+    padding: 20px 16px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+}
+
+.footer-links a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+}
+
+.footer-logo {
+    width: 100px;
+    height: auto;
+}
+#services,
+#video-showcase {
+    position: relative;
+    z-index: 0;
+}
+
+.video-box video,
+.service img {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+}
+.video-box .info p,
+.video-box .info a,
+.video-box .info button {
+    position: relative;
+    z-index: 3;
+}
+#toyota-history {
+  background-color: #f5f5f5;
+  padding: 80px 20px;
+  color: #333;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#toyota-history .history-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#toyota-history .text {
+  flex: 1;
+  min-width: 300px;
+}
+
+#toyota-history h2 {
+  color: #c1121f; /* rojo Toyota */
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#toyota-history p {
+  line-height: 1.7;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+#toyota-history .image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+#toyota-history .image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+/* 🔹 Fondo del inicio en la página Toyota */
+#toyota-main {
+  position: relative;
+  height: 100vh;
+  background-image: url("img/toyota-symbolbild-2021-01-min-1400x700.png.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+/* Asegura que el contenido quede encima */
+#toyota-main .main-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+/* 🔹 Sección de Vehículos */
+#vehiculos {
+  background-color: #f8f8f8;
+  padding: 80px 0;
+  text-align: center;
+}
+
+/* Pega aquí el nuevo diseño limpio y elegante */
+.vehiculos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.vehiculo {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehiculo:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.vehiculo img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.vehiculo h3 {
+  color: #c1121f;
+  font-size: 24px;
+  margin: 15px 0 10px 0;
+}
+
+.vehiculo p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.5;
+}
+/*    SECCIÓN AUDI         */
+/* ----------------------- */
+
+.audi-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.audi-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #b11a21; /* Rojo Audi */
+    margin-bottom: 20px;
+}
+
+.audi-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.audi-logo {
+    width: 140px;
+}
+
+.audi-text {
+    flex: 1;
+    font-size: 17px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.audi-models-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 40px;
+    text-align: center;
+    color: #222;
+}
+
+.audi-models {
+    margin-top: 25px;
+}
+
+.model-card {
+    background: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+}
+
+.model-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #b11a21;
+}
+
+.model-card p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+/*       FORD – HEADER            */
+/* ============================== */
+
+#ford-main {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background: url("img/ford-bg.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px; /* evita que el menú lo cubra */
+}
+
+#ford-main .main-content img {
+    width: 800px;
+    height: auto;
+}
+
+
+/* ============================== */
+/*       HISTORIA DE FORD         */
+/* ============================== */
+
+#ford-history {
+    padding: 60px 0;
+}
+
+#ford-history h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+#ford-history .history-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+#ford-history .history-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#ford-history .image img {
+    width: 350px;
+}
+
+
+/* ============================== */
+/*    MODELOS FORD (MISMO GRID)  */
+/* ============================== */
+
+#ford-vehiculos {
+    padding: 60px 0;
+}
+
+#ford-vehiculos .section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+#ford-vehiculos .line {
+    width: 100px;
+    height: 3px;
+    background: red; /* el mismo que usaste antes */
+    margin: 0 auto 40px auto;
+}
+
+#ford-vehiculos .vehiculos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+#ford-vehiculos .vehiculo {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* obliga a todas a igualarse */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+#ford-vehiculos .vehiculo img {
+    width: 100%;
+    height: auto;
+}
+
+#ford-vehiculos .vehiculo h3 {
+    margin: 15px 0;
+}
+
+#ford-vehiculos .vehiculo p {
+    font-size: 16px;
+      flex-grow: 1;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .menu-btn { 
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        padding-top: 50px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-list.active {
+        right: 0;
+    }
+
+    .nav-list li:not(:last-child) {
+        text-align: left;
+        width: 100%;
+        padding: 10px 30px;
+        border-bottom: 1px solid var(--white);
+    }
+
+    .main-content .main-heading {
+        font-size: 60px;
+    }
+
+    .main-content .intro-heading {
+        font-size: 30px;
+    }
+
+    #about-us .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    footer .container {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
